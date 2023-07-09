@@ -33,10 +33,8 @@ def savings(gross_pay, tax_rate, expenses):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def savings(gross_pay,tax_rate,expenses):
-        output = (int(gross_pay)*(1-float(tax_rate))//1)-int(expenses)
-        return int(output)
-    print (savings(500,0.1,35))
+    output = (int(gross_pay)*(1-float(tax_rate))//1)-int(expenses)
+    return int(output)
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
@@ -71,11 +69,9 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def material_waste(total_material, material_units, num_jobs, job_consumption):
-        waste = int(total_material)-(int(num_jobs)*int(job_consumption))
-        output = str(waste) + str(material_units)
-        return str(output)
-    print(material_waste(100,"kg",1,10))
+    waste = int(total_material)-(int(num_jobs)*int(job_consumption))
+    output = str(waste) + str(material_units)
+    return str(output)
 
 def interest(principal, rate, periods):
     '''Interest.
@@ -105,11 +101,9 @@ def interest(principal, rate, periods):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def interest(principal, rate, periods):
-        interest = int(principal)*(float(rate)*int(periods))
-        final_value = (int(principal) + float(interest))//1
-        return int(final_value)
-    print (interest(100,0.1,1))
+    interest = int(principal)*(float(rate)*int(periods))
+    final_value = (int(principal) + float(interest))//1
+    return int(final_value)
 
 def body_mass_index(weight, height):
     '''Body Mass Index.
@@ -145,9 +139,7 @@ def body_mass_index(weight, height):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    def body_mass_index(weight, height):
-        ConvWeight = float(weight)/2.205
-        ConvHeight = (float(height [0])/3.281)+(float(height [1])/39.37)
-        bmi = ConvWeight/(ConvHeight**2)
-        return float(bmi) 
-    print (body_mass_index(150,[5,10]))
+    ConvWeight = float(weight)/2.205
+    ConvHeight = (float(height [0])/3.281)+(float(height [1])/39.37)
+    bmi = ConvWeight/(ConvHeight**2)
+    return float(bmi) 
