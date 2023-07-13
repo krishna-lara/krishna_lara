@@ -37,12 +37,13 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    if letter==" ":
+    if letter == " ":
         return " "
-    elif (ord(str(letter)))-65+int(shift) > 25:
-        return str("ABCDEFGHIJKLMNOPQRSTUVWXYZ"[(ord(str(letter)))-65+int(shift)-26])
     else:
-        return str("ABCDEFGHIJKLMNOPQRSTUVWXYZ" [(ord(str(letter)))-65+int(shift)])
+        letter_num = ord(letter)
+        shifted_value = (letter_num - 65 + int(shift)) % 26
+        shifted_letter = chr(shifted_value + 65)
+        return shifted_letter
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -68,10 +69,11 @@ def caesar_cipher(message, shift):
     for ch in str(message):
         if ch == " ":
             final_list.append(" ")
-        elif (ord(ch)+shift) > 90:
-            final_list.append(chr(ord (ch)+shift-26))
-        elif (ord(ch)+shift)<90:
-            final_list.append(chr(ord (ch)+shift)
+        else:
+            letter_value = ord(ch)
+            shifted_value = (letter_value - 65 + int(shift)) % 26 + 65
+            shifted_letter = chr(shifted_value)
+            final_list.append(shifted_letter)
     return ''.join(final_list)
 
 def shift_by_letter(letter, letter_shift):
@@ -150,13 +152,12 @@ def vigenere_cipher(message, key):
             i = 0
     correctkey = ''.join(keylist)
     output = []
-    for ch in message:
-        k = len (output)
-        number_shift = int(ord(correctkey[k]) - 65)
-        if ord(ch)+number_shift > 90:
-            output.append(chr(ord(ch)+number_shift-26))
-        elif ord(ch)+number_shift <= 90:
-            output.append(chr(ord(ch)+number_shift))
+    for ch, k in zip(message, correctkey):
+        number_shift = ord(k) - 65
+        if ord(ch) + number_shift > 90:
+            output.append(chr(ord(ch) + number_shift - 26))
+        else:
+            output.append(chr(ord(ch) + number_shift))
     return ''.join(output)
 
 def scytale_cipher(message, shift):
