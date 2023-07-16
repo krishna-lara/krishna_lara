@@ -47,16 +47,16 @@ def relationship_status(from_member, to_member, social_graph):
     
     if to_member in from_following_list:
         if from_member in to_following_list:
-            print ("friends")
+            return ("friends")
         else:
-            print ("follower")
+            return ("follower")
     if from_member in to_following_list: 
         if to_member in from_following_list:
-            print ("friends")
+            return ("friends")
         else:
-            print ("following")
+            return ("following")
     if from_member not in to_following_list and to_member not in from_following_list:
-        print ("no relationship")
+        return ("no relationship")
     return
 
 def tic_tac_toe(board):
@@ -109,9 +109,7 @@ def tic_tac_toe(board):
             return "X"
         if all(board[x][len(board) - 1 - x] == "O" for x in range(len(board))):
             return "O"
-        else:
-            return "NO WINNER"
-    return 
+        return "NO WINNER"
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.

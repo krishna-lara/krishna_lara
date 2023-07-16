@@ -152,12 +152,15 @@ def vigenere_cipher(message, key):
             i = 0
     correctkey = ''.join(keylist)
     output = []
-    for ch, k in zip(message, correctkey):
-        number_shift = ord(k) - 65
-        if ord(ch) + number_shift > 90:
-            output.append(chr(ord(ch) + number_shift - 26))
+    for b, k in zip(message, correctkey):
+        if not b.isalpha():
+            output.append(b)
+            continue
+        number_shift = ord(k.upper()) - 65
+        if b.isupper():
+            output.append(chr((ord(b) - 65 + number_shift) % 26 + 65))
         else:
-            output.append(chr(ord(ch) + number_shift))
+            output.append(chr((ord(b) - 97 + number_shift) % 26 + 97))
     return ''.join(output)
 
 def scytale_cipher(message, shift):
