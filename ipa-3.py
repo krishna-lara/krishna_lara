@@ -41,23 +41,18 @@ def relationship_status(from_member, to_member, social_graph):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    
-    from_following_list = social_graph [from_member]["following"]
-    to_following_list = social_graph [to_member]["following"]
-    
+    from_following_list = social_graph[from_member]["following"]
+    to_following_list = social_graph[to_member]["following"]
+
     if to_member in from_following_list:
         if from_member in to_following_list:
-            return ("friends")
+            return "friends"
         else:
-            return ("follower")
-    if from_member in to_following_list: 
-        if to_member in from_following_list:
-            return ("friends")
-        else:
-            return ("following")
-    if from_member not in to_following_list and to_member not in from_following_list:
-        return ("no relationship")
-    return
+            return "followed by"
+    elif from_member in to_following_list:
+        return "following"
+    else:
+        return "no relationship"
 
 def tic_tac_toe(board):
     '''Tic Tac Toe.
@@ -85,31 +80,33 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    #checking rows 
+    #checking rows
     for i in board:
         if all(item == "X" for item in i):
             return "X"
         if all(item == "O" for item in i):
             return "O"
-    #checking columns 
+
+    #checking columns
     for a in range(len(board)):
         if all(board[c][a] == "X" for c in range(len(board))):
             return "X"
         if all(board[c][a] == "O" for c in range(len(board))):
             return "O"
-    
-    #diagonal 1
-        if all(board[b][b] == "X" for b in range(len(board))):
-            return "X"
-        if all(board[b][b] == "O" for b in range(len(board))):
-            return "O"
-    #diagonal 2
 
-        if all(board[x][len(board) - 1 - x] == "X" for x in range(len(board))):
-            return "X"
-        if all(board[x][len(board) - 1 - x] == "O" for x in range(len(board))):
-            return "O"
-        return "NO WINNER"
+    #diagonal 1
+    if all(board[b][b] == "X" for b in range(len(board))):
+        return "X"
+    if all(board[b][b] == "O" for b in range(len(board))):
+        return "O"
+
+    #diagonal 2
+    if all(board[x][len(board) - 1 - x] == "X" for x in range(len(board))):
+        return "X"
+    if all(board[x][len(board) - 1 - x] == "O" for x in range(len(board))):
+        return "O"
+
+    return "NO WINNER"
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.
