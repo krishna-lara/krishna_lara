@@ -44,13 +44,13 @@ def relationship_status(from_member, to_member, social_graph):
     from_following_list = social_graph[from_member]["following"]
     to_following_list = social_graph[to_member]["following"]
 
-    if to_member in from_following_list:
-        if from_member in to_following_list:
+    if from_member in to_following_list:
+        if to_member in from_following_list:
             return "friends"
         else:
             return "followed by"
-    elif from_member in to_following_list:
-        return "following"
+    elif to_member in from_following_list:
+        return "follower"
     else:
         return "no relationship"
 
